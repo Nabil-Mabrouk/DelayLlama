@@ -1,7 +1,7 @@
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_code_pb2
-
+import streamlit as st
 
 class Assistant:
     def __init__(self, nlp_model):
@@ -51,6 +51,7 @@ class Assistant:
         """
         print(f"Recommandations: {recommendation}")
         #response = self.nlp_model.run(recommendation)
+        response = ""
         return response
 
 
@@ -68,6 +69,14 @@ class Model():
     def run(self, query):
         # Your PAT (Personal Access Token) can be found in the portal under Authentification
         PAT = '331ec2dac4f74cbca3a930ff13ffe4d7'
+        PAT = os.environ.get('CLARIFAI_PAT') 
+
+        if not PAT:  # If PAT is not set via environment variable
+            try:
+                PAT = st.secrets['CLARIFAI_PAT']
+            except KeyError:
+                st.error("Failed to retrieve the Clarifai Personal Access Token!")
+                PAT = None
         # Specify the correct user_id/app_id pairings
         # Since you're making inferences outside your app's scope
         USER_ID = 'meta'
