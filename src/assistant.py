@@ -3,6 +3,8 @@ from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_code_pb2
 import streamlit as st
 import os
+from dotenv import load_dotenv
+load_dotenv() 
 
 class Assistant:
     def __init__(self, nlp_model):
@@ -73,7 +75,8 @@ class Model():
 
         if not PAT:  # If PAT is not set via environment variable
             try:
-                PAT = st.secrets['CLARIFAI_PAT']
+                #PAT = st.secrets['CLARIFAI_PAT']
+                PAT= os.environ.get("CLARIFAI_PAT")
             except KeyError:
                 st.error("Failed to retrieve the Clarifai Personal Access Token!")
                 PAT = None
