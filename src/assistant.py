@@ -2,6 +2,7 @@ from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_code_pb2
 import streamlit as st
+import os
 
 class Assistant:
     def __init__(self, nlp_model):
@@ -68,7 +69,6 @@ class Model():
     
     def run(self, query):
         # Your PAT (Personal Access Token) can be found in the portal under Authentification
-        PAT = '331ec2dac4f74cbca3a930ff13ffe4d7'
         PAT = os.environ.get('CLARIFAI_PAT') 
 
         if not PAT:  # If PAT is not set via environment variable
