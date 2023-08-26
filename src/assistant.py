@@ -49,7 +49,8 @@ class Assistant:
         Returns:
             str: Explanation of the recommendation.
         """
-        response = self.nlp_model.run(recommendation)
+        print(f"Recommandations: {recommendation}")
+        #response = self.nlp_model.run(recommendation)
         return response
 
 

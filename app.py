@@ -1,7 +1,7 @@
 import streamlit as st
-from assistant import Assistant, Model
-from user import User
-from database import Database
+from src.assistant import Assistant, Model
+from src.user import User
+from src.database import Database
 
 class DemoApp:
     def __init__(self, assistant, database):
