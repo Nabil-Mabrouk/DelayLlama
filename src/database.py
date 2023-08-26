@@ -51,6 +51,9 @@ class Database:
         #self.disconnect()
         data=[1, 2, 3,4,5]
         return data
+    
+    def save_recommendation(self, recommendation):
+        pass
 
 # Example usage:
 # database = Database()  # Initialize the database instance
