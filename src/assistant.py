@@ -23,7 +23,7 @@ class Assistant:
         Returns:
             str: Assistant's response to the user's query.
         """
-        response = self.nlp_model(user_query)
+        response = self.nlp_model.run(user_query)
         return response
 
     def explain_recommendation(self, recommendation):
@@ -36,7 +36,20 @@ class Assistant:
         Returns:
             str: Explanation of the recommendation.
         """
-        response = self.nlp_model(recommendation)
+        response = self.nlp_model.run(recommendation)
+        return response
+    
+    def generate_recommendation(self, recommendation):
+        """
+        Explain a trading recommendation to the user.
+
+        Args:
+            recommendation (Recommendation): The trading recommendation to explain.
+
+        Returns:
+            str: Explanation of the recommendation.
+        """
+        response = self.nlp_model.run(recommendation)
         return response
 
 
