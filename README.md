@@ -1,77 +1,44 @@
-# DelayLlama
-### Crypto Correlation Alert System with Delayed Signals:
+# App Name: D-Llama
 
-## Demo:
-- on streamlit cloud : [Delay-Llama](https://delayllama.streamlit.app/)
+on streamlit cloud : [Delay-Llama](https://delayllama.streamlit.app/)
 
-## Project Description: 
-Creating a vocal assistant that can provide traders with real-time insights and recommendations in a conversational manner on the cryptocurrencies market
+## Purpose
 
-1-**Voice Interaction:** Integrate a voice recognition system to allow users to interact with the vocal assistant verbally. Users can ask questions and receive responses through speech.
+D-Llama is an application designed to assist users in analyzing and making informed decisions in the cryptocurrency market. It leverages various data sources and a conversational interface to provide market insights, technical analysis, and news updates.
 
-2- **Real-Time Data Integration:** Connect the vocal assistant to real-time cryptocurrency market data sources to provide up-to-the-minute information on prices, trends, and volumes.
+## Key Features
 
-3- **Market Overview:** When users ask about the market, the vocal assistant can provide an overview of the current state, including the overall sentiment (bullish, bearish, or neutral) and the performance of major cryptocurrencies.
+### Market Data Retrieval
 
-4- **Correlation Insights:** The vocal assistant can explain correlations it has identified. For example, it can mention that Bitcoin and XRP are both performing well, but caution that they are approaching weekly resistance levels.
+- The app fetches up-to-date cryptocurrency market data, including open, close, high, low, and volume for Bitcoin (BTC) at 1-hour intervals.
+- It calculates technical indicators such as moving averages (SMA and EMA), Relative Strength Index (RSI), price variations, and volatility.
 
-5- **Trading Recommendations:** When users inquire about which cryptocurrency to long or short, the vocal assistant can suggest options based on its analysis. In your example, it recommends watching SXP due to increased volatility and its proximity to support.
+### Cryptocurrency News
 
-6- **Risk Assessment:** Include a risk assessment in the recommendations. The vocal assistant can mention potential risks associated with each recommendation, such as market volatility or upcoming events.
+- The app scrapes cryptocurrency news from the web, focusing on Bitcoin (BTC).
+- News articles are processed and organized for user access.
 
-7- **User Queries:** Users should be able to ask follow-up questions or seek clarification. The vocal assistant should provide detailed responses and explanations as needed.
+### Conversational Interface
 
-8- **Portfolio Management:** Extend the vocal assistant's capabilities to allow users to manage their cryptocurrency portfolios. Users can instruct the assistant to buy, sell, or adjust positions.
+- Users can interact with the app by typing questions or requests related to the cryptocurrency market.
+- The app processes user queries and responds with relevant information.
 
-7- **Continuous Updates:** The vocal assistant should provide regular updates as market conditions change. For example, it can notify users if the market sentiment shifts from bullish to bearish.
+### Large Language Models and Clarifai Integration
 
-8- **Customization:** Allow users to customize their preferences and risk tolerance. The vocal assistant can tailor its recommendations based on the user's profile and trading strategy.
+- The app integrates Large Language Models with Clarifai, a service that can process text data.
+- It uses llm to assist in answering user questions and providing specific data from the market dataset.
 
-9- **Privacy and Security:** Ensure robust security measures to protect user data, especially since this involves financial information and trading recommendations.
+### User-Friendly UI
 
-10- **Feedback Mechanism:** Implement a feedback mechanism where users can provide feedback on the vocal assistant's recommendations, helping to improve its accuracy over time.
+- The Streamlit-based user interface is user-friendly, allowing users to easily enter questions and receive responses.
+- Users can select different models to answer their questions, including technical analysis models and more.
 
-## Demo project
-A project demo to be built within a tight three-day timeline, should focuss on essential components and features to showcase the core functionality of the cryptocurrency correlation vocal assistant. Here's the streamlined plan:
+## How It Works
 
-1. User Interface (UI):
+Users input questions or requests related to the cryptocurrency market into the app's interface. The app processes user queries step by step, extracting necessary data from the cryptocurrency market dataset. For complex questions, the app uses the llm integration to assist in generating relevant Python code to retrieve specific data. Users receive responses that may include technical analysis, market insights, or relevant news articles.
 
-Develop a minimalistic text-based interface where users can type queries and receive text responses. While voice recognition is a valuable feature, it may require additional time for setup and integration.
+**Note:** While the app provides valuable information and analysis, it's essential to use it as a tool for gaining insights into the cryptocurrency market. Always exercise caution and do thorough research before making financial decisions in the volatile cryptocurrency market.
 
-2. Market Data Integration:
+## Enhancements and Future Development
 
-Connect to a limited set of cryptocurrency market data sources to fetch real-time data for a few major cryptocurrencies (e.g., Bitcoin and Ethereum).
-
-3. Data Analysis:
-
-Implement a simplified data analysis module that demonstrates the concept of identifying correlations between two cryptocurrencies with a minor delay.
-
-4. Recommendation Engine:
-
-Create a basic recommendation engine that generates hypothetical trading signals for a limited number of cryptocurrency pairs based on the simplified correlation analysis.
-
-5. Text-based Responses:
-
-Develop a text-based response system where the vocal assistant provides recommendations and explanations in a textual format.
-
-6. Demo Scenario:
-
-Prepare a scripted demo scenario where we can interact with the application by typing queries, receiving recommendations, and explaining the process to showcase the core functionality.
-
-7. User Interaction Logs:
-
-Implement basic logging of user interactions to show how queries are processed and how recommendations are generated.
-
-8. Simple Risk Assessment:
-
-Include a simplified risk assessment component that highlights the importance of considering risk factors when trading.
-
-9. Educational Content:
-
-Create concise educational content within the application that explains the concept of delayed correlations and how the application generates recommendations.
-
-10. Presentation Materials:
-- Prepare presentation slides or materials that visually demonstrate the application's architecture and functionality.
-
-11. Testing and Quality Assurance:
-- Thoroughly test the core features to ensure they work as intended for the demo.
+This app can be extended to include support for more cryptocurrencies and additional technical indicators. User authentication and personalization features can be added to save user preferences and historical queries. Integration with real-time market data APIs can provide even more up-to-the-minute information. Continuous monitoring and automation of data updates can be implemented to keep the information current. Overall, D-Llama serves as a handy tool for cryptocurrency enthusiasts and traders seeking market insights and analysis in a conversational and user-friendly manner.
