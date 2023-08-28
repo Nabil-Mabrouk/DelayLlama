@@ -364,7 +364,7 @@ class Demo():
 
         with self.tab1:
             st.header("Chat with the market")
-            st.info("Examples:\n - What's the outlook for Bitcoin in the coming week?\n - Did you notice any double-bottom pattern?")
+            st.info("Examples:\n - What's the trend of bitcoin price today?\n - Why did the bitcoin volatility spiked today?")
             #st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
             # Add the model selection dropdown
             selected_model_name = st.selectbox("Select Model:", list(models.keys()))
@@ -473,7 +473,7 @@ if __name__=="__main__":
     df= add_technical_indicators(df, config=None)
 
     # fectch market news and save them to dataframes
-    #auth_token = '69ea4fb639103ff45e9121adab53df3afbad1439'
+    #auth_token = st.secrets["auth_key"]
     #raw=fetch_crypto_news(auth_token, 'BTC')
     #print(raw)
     #news=fetch_news(raw)
