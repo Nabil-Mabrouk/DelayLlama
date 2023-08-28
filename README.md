@@ -1,6 +1,9 @@
 # DelayLlama
 ### Crypto Correlation Alert System with Delayed Signals:
 
+## Demo:
+- on streamlit cloud : [Delay-Llama](https://delayllama.streamlit.app/)
+
 ## Project Description: 
 Creating a vocal assistant that can provide traders with real-time insights and recommendations in a conversational manner on the cryptocurrencies market
 

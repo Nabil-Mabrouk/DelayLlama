@@ -1,3 +1,5 @@
+from deta import Deta
+import streamlit as st
 
 class Database:
     def __init__(self):
@@ -7,17 +9,35 @@ class Database:
         Args:
             db_url (str): The database URL. Defaults to SQLite in-memory database.
         """
-        self.db_url = ""
-        self.connection = None
+        ## connect to the Deta collection
+        self.deta=Deta(st.secrets["deta_key"])
 
-    def connect(self):
-        """Connect to the database."""
-        #self.connection = sqlite3.connect(self.db_url)
+        ## create or get the references to the tables
+        self.tables={}
+        self.tables["data"]={}
 
-    def disconnect(self):
-        """Disconnect from the database."""
-        #if self.connection:
-        #    self.connection.close()
+        ## These tables keep tracks of the a list of tables on Deta as this list can not be fetched otherwise
+        self.tables["assets"]=self.deta.Base("assets") #[data={"asset_name", "asset_description"}, key="symbol"]
+        self.tables["indicators"]=self.deta.Base("indicators") #[data={"indicator_name", "indicator_description"}, key="symbol"]
+        self.tables["timeframes"]=self.deta.Base("timeframes") #[data={"timeframe_name", "value in ms"}, key="symbol"]
+
+        # For each asset/timeframe pair we will create a table and add it to self.tables["data"]["BTC"]["1h"]
+        assets = self.deta.Base("assets").fetch().items
+        timeframes=self.deta.Base("timeframes").fetch().items
+        for asset in assets:
+            _asset=asset["key"]
+            self.tables["data"][_asset]={}
+            for timeframe in timeframes:
+                _timeframe=timeframe["key"]
+                self.tables["data"][_asset][_timeframe]={}
+                db_name=_asset+"_"+_timeframe
+                self.tables["data"][_asset][_timeframe]=self.deta.Base(db_name)
+
+
+
+    def db(self, name):
+        return self.deta.Base(name)
+
 
     def get_available_indicators(self):
         """
@@ -26,15 +46,10 @@ class Database:
         Returns:
             list: List of indicator names.
         """
-        #self.connect()
-        #cursor = self.connection.cursor()
-        #cursor.execute("SELECT DISTINCT indicator_name FROM indicator_data")
-        #indicator_names = [row[0] for row in cursor.fetchall()]
-        #self.disconnect()
-        indicator_names=["SMA", "volatility"]
-        return indicator_names
+        return self.db("indicators_list_db").fetch().items
 
-    def retrieve_indicator_data(self, indicator_name):
+
+    def retrieve_indicator_data(self, asset, indicator_name):
         """
         Retrieve historical indicator data from the database.
 
@@ -44,10 +59,9 @@ class Database:
         Returns:
             list: Historical data for the specified indicator.
         """
-        #self.connect()
-        #cursor = self.connection.cursor()
-        #cursor.execute("SELECT data FROM indicator_data WHERE indicator_name = ?", (indicator_name,))
-        #data = [row[0] for row in cursor.fetchall()]
+        _data=self.db[asset].fetch({"column?equal":"indicator_name"})
+
+        # convert to a dataframe and return
         #self.disconnect()
         data=[1, 2, 3,4,5]
         return data
